@@ -9,9 +9,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>TechThreads.com</title>
-        <meta name="description" content="TechThreads.com - TechThreads, show the code, live the code" />
+        <title>TechThreads.com - T-Shirts, Hoodies, TVs, and Mugs for Coders</title>
+        <meta name="description" content="Discover TechThreads.com's wide range of t-shirts, hoodies, TVs, and mugs for coders and tech enthusiasts. Show the code, live the code." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="TechThreads, t-shirts for coders, hoodies for tech enthusiasts, tech-themed mugs, high-definition TVs, coder apparel" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -19,7 +20,7 @@ export default function Home() {
         src="/home4.jpg"
         width={1550}
         height={500}
-        alt="Picture of the author"
+        alt="TechThreads - Show the Code, Live the Code"
       />
 
       <section className="text-gray-600 body-font">

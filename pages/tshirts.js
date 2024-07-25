@@ -2,13 +2,21 @@ import React from "react";
 import Link from "next/link";
 import mongoose from "mongoose";
 import Product from "@/models/Product";
+import Head from "next/head";
 
 const Tshirts = ({ products }) => {
   return (
     <div>
+      <Head>
+        <title>TechThreads.com - T-Shirts for Coders and Tech Enthusiasts</title>
+        <meta name="description" content="Explore TechThreads.com's collection of T-shirts designed for coders and tech enthusiasts. Stylish and comfortable, perfect for everyday wear." />
+        <meta name="keywords" content="TechThreads, t-shirts for coders, tech t-shirts, coder t-shirts, tech enthusiasts, stylish t-shirts, comfortable t-shirts" />
+      </Head>
+
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
+            {Object.keys(products).length === 0 && <p>Sorry, all the T-shirts are currently out of stock. New stock coming soon. Stay tuned!</p>}
             {Object.keys(products).map((item) => {
               return (
                 <Link
@@ -18,7 +26,7 @@ const Tshirts = ({ products }) => {
                 >
                   <div className="lg:w-9/10 md:w-8/10 p-4 w-full shadow-lg m-5">
                     <img
-                      alt="ecommerce"
+                      alt={`T-Shirt - ${products[item].title}`}
                       className="m-auto h-[36vh] block"
                       src={products[item].img}
                     />

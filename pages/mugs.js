@@ -2,14 +2,21 @@ import React from "react";
 import Link from "next/link";
 import mongoose from "mongoose";
 import Product from "@/models/Product";
+import Head from "next/head";
 
 const Mugs = ({ products }) => {
   return (
     <div>
+      <Head>
+        <title>TechThreads.com - Mugs for Coders and Tech Enthusiasts</title>
+        <meta name="description" content="Discover TechThreads.com's exclusive collection of mugs designed for coders and tech enthusiasts. Perfect for your coffee breaks." />
+        <meta name="keywords" content="TechThreads, mugs for coders, tech mugs, coder mugs, tech enthusiasts, coffee mugs, stylish mugs" />
+      </Head>
+
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
-            {Object.keys(products).length===0 && <p>Sorry all the Mugs are currently out of stock. New stock coming soon. Stay tuned!</p>}
+            {Object.keys(products).length === 0 && <p>Sorry, all the Mugs are currently out of stock. New stock coming soon. Stay tuned!</p>}
             {Object.keys(products).map((item) => {
               return (
                 <Link
@@ -19,8 +26,8 @@ const Mugs = ({ products }) => {
                 >
                   <div className="lg:w-9/10 md:w-8/10 p-4 w-full shadow-lg m-5">
                     <img
-                      alt="ecommerce"
-                      className="m-auto  h-[36vh] block"
+                      alt={`Mug - ${products[item].title}`}
+                      className="m-auto h-[36vh] block"
                       src={products[item].img}
                     />
                     <div className="mt-4 text-center md:text-left">
@@ -63,7 +70,7 @@ export async function getServerSideProps(context) {
   }
 
   let products = await Product.find({ category: 'mugs' });
-  let mug = {}
+  let mug = {};
   for (let item of products) {
     if (item.title in mug) {
       if (!mug[item.title].color.includes(item.color) && item.availableQty > 0) {
@@ -82,7 +89,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: { products: JSON.parse(JSON.stringify(mug)) },
-  }
+  };
 }
 
 export default Mugs;
